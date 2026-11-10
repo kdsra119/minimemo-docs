@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>미니메모(MiniMemo) 개인정보처리방침</title>
+<style>
+  :root { color-scheme: light; }
+  body {
+    margin: 0; padding: 40px 20px 64px;
+    background: #f6f7f9; color: #23272e;
+    font-family: "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    line-height: 1.75; font-size: 16px;
+  }
+  main {
+    max-width: 760px; margin: 0 auto; background: #fff;
+    border: 1px solid #e3e6eb; border-radius: 12px;
+    padding: 40px 44px 48px;
+  }
+  h1 { font-size: 24px; margin: 0 0 8px; }
+  .meta { color: #6a7280; font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 18px; margin: 32px 0 8px; }
+  ul { margin: 8px 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+  code {
+    background: #eef1f4; border-radius: 4px; padding: 1px 5px;
+    font-family: Consolas, "Courier New", monospace; font-size: 14px;
+    word-break: break-all;
+  }
+  a { color: #2563eb; }
+  @media (max-width: 640px) {
+    body { padding: 16px 10px 40px; }
+    main { padding: 26px 20px 32px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>미니메모(MiniMemo) 개인정보처리방침</h1>
+  <p class="meta">시행일: 2026년 11월 10일</p>
+
+  <p>미니메모(이하 "앱")는 사용자의 PC 안에서만 동작하는 로컬 전용 메모 앱입니다. 이 방침은 앱이 사용자의 정보를 어떻게 다루는지, 그리고 다루지 않는지를 설명합니다.</p>
+
+  <h2>1. 개발자는 개인정보를 수집하지 않습니다</h2>
+  <ul>
+    <li>앱에는 회원가입과 로그인이 없습니다. 개발자는 계정 서버를 운영하지 않습니다.</li>
+    <li>앱에는 사용 통계 수집(텔레메트리), 분석 도구, 광고 식별자가 포함되어 있지 않습니다.</li>
+    <li>앱은 메모 내용, 사용 기록 등 어떤 정보도 개발자나 제3자에게 전송하지 않습니다.</li>
+  </ul>
+
+  <h2>2. 메모 데이터는 사용자의 PC에만 저장됩니다</h2>
+  <ul>
+    <li>메모는 사용자의 PC에 있는 파일 <code>%APPDATA%\MiniMemo\notes.json</code>에 저장됩니다.</li>
+    <li>사용자가 앱 설정에서 저장 폴더를 직접 지정한 경우에는, 메모 파일은 지정한 폴더의 <code>notes.json</code>에 저장됩니다 (6번 항목 참조).</li>
+    <li>설정 파일(<code>settings.json</code>)과 실행 기록(<code>minimemo.log</code>)은 저장 폴더 설정과 관계없이 항상 <code>%APPDATA%\MiniMemo</code> 폴더에 로컬로만 남습니다.</li>
+  </ul>
+
+  <h2>3. 잠금 기능은 화면 잠금이며, 파일 암호화가 아닙니다</h2>
+  <ul>
+    <li>메모 잠금은 앱 화면에서 내용을 가리고 AI 도구에도 내용을 제공하지 않기 위한 기능입니다.</li>
+    <li>데이터 파일 자체는 암호화되지 않은 평문 JSON입니다. 사용자의 Windows 계정에 접근할 수 있는 사람은 파일을 직접 열어 내용을 읽을 수 있습니다.</li>
+    <li>잠금 비밀번호는 원문으로 저장되지 않고 해시 형태로만 저장됩니다.</li>
+    <li>비밀번호를 잊으면 개발자도 복구할 수 있는 방법이 없습니다.</li>
+  </ul>
+
+  <h2>4. 자동 백업에도 메모가 평문으로 남습니다</h2>
+  <ul>
+    <li>앱은 하루 1회 자동 백업을 만들어 데이터 폴더의 <code>backups</code> 폴더에 최근 14개까지 보관하고, 마지막 정상 상태 사본(<code>last-good.json</code>)도 함께 유지합니다. 백업 폴더는 사용자가 따로 지정할 수 있으며, 지정한 경우 백업은 그 폴더에 만들어집니다.</li>
+    <li>이 백업 파일들에도 메모가 암호화되지 않은 평문으로 들어 있습니다.</li>
+    <li>앱에서 메모를 삭제하고 휴지통을 비워도, 보관 기간이 지나지 않은 백업 파일에는 해당 메모가 남아 있을 수 있습니다. 완전히 지우는 방법은 7번 항목을 참조하십시오.</li>
+    <li>사용자가 "백업 내보내기"로 만든 JSON 파일도 평문입니다. 내보낸 파일의 보관과 삭제는 사용자 본인이 관리합니다.</li>
+  </ul>
+
+  <h2>5. AI 연결(MCP)은 사용자가 설정한 경우에만 동작합니다</h2>
+  <ul>
+    <li>AI 연결은 사용자가 앱의 AI 연결 패널에서 설정을 복사해 본인의 AI 클라이언트에 직접 넣은 경우에만 활성화됩니다. 설정하지 않으면 어떤 AI도 메모에 접근할 수 없습니다.</li>
+    <li>연결은 사용자의 PC 안에서만 이루어지는 로컬(stdio) 방식입니다. 개발자의 서버를 경유하지 않으며, 개발자는 사용자의 메모 내용을 받거나 저장하지 않습니다.</li>
+    <li>단, 연결된 AI가 메모를 읽으면 그 내용은 사용자가 선택한 AI 서비스로 전송될 수 있습니다. 전송된 이후의 처리는 해당 AI 제공자의 개인정보처리방침을 따릅니다. 어떤 AI를 연결할지는 사용자가 결정합니다.</li>
+    <li>잠긴 메모의 제목과 본문은 AI 도구에 제공되지 않습니다. 다만 잠긴 메모가 존재한다는 사실과 폴더 이름, 별표 여부, 수정 시각 같은 부가 정보는 목록에 표시될 수 있고, 폴더 이름으로는 검색될 수 있습니다.</li>
+    <li>AI가 메모를 추가·보관·활성하는 쓰기 작업은 사용자의 PC에 있는 감사 기록 파일(<code>mcp_audit.jsonl</code>)에 남습니다. 이 파일도 개발자에게 전송되지 않습니다.</li>
+    <li>읽기 전용 모드를 켜면 AI는 메모를 읽을 수만 있고 쓸 수 없습니다.</li>
+  </ul>
+
+  <h2>6. 동기화 폴더를 지정한 경우</h2>
+  <ul>
+    <li>기본적으로 앱은 어떤 기기 간 동기화도 하지 않습니다.</li>
+    <li>사용자가 저장 폴더로 Google Drive 같은 동기화 서비스의 폴더를 직접 지정하면, 그 서비스의 동작에 따라 메모 파일이 다른 기기로 복사될 수 있습니다. 이 경우의 정보 처리는 해당 동기화 서비스 제공자의 방침을 따릅니다.</li>
+    <li>개발자는 동기화 서버를 운영하지 않습니다.</li>
+  </ul>
+
+  <h2>7. 데이터 삭제는 사용자가 완전히 통제합니다</h2>
+  <ul>
+    <li>메모는 앱에서 삭제할 수 있고, 휴지통에서 항목을 영구 삭제하면 앱 안에서는 복구할 수 없습니다.</li>
+    <li>백업을 포함한 모든 데이터를 완전히 지우려면 데이터 폴더 <code>%APPDATA%\MiniMemo</code> 전체를 삭제하십시오 (저장 폴더를 따로 지정한 경우에는 그 폴더의 데이터 파일과 <code>backups</code> 폴더 포함). 앱을 제거(언인스톨)한 뒤에 이 폴더를 지우면 됩니다.</li>
+    <li>개발자는 사용자의 메모 사본을 어떤 형태로도 보유하고 있지 않으므로, 개발자에게 삭제를 요청할 데이터가 없습니다.</li>
+  </ul>
+
+  <h2>8. 아동의 개인정보</h2>
+  <ul>
+    <li>앱은 누구의 개인정보도 수집하지 않으므로, 아동을 포함한 어떤 사용자의 정보도 수집·보관하지 않습니다.</li>
+  </ul>
+
+  <h2>9. 방침의 변경</h2>
+  <ul>
+    <li>이 방침이 바뀌면 이 페이지에 새 내용을 게시하고 시행일을 갱신합니다. 수집 방침의 근본이 바뀌는 경우(예: 새 기능이 정보를 수집하게 되는 경우)에는 스토어 설명에서도 함께 알립니다.</li>
+  </ul>
+
+  <h2>10. 문의처</h2>
+  <ul>
+    <li>이메일: <a href="mailto:kdsra119@gmail.com">kdsra119@gmail.com</a></li>
+  </ul>
+</main>
+</body>
+</html>
